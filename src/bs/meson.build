@@ -32,6 +32,7 @@ executable('bs',
           sources: bs_exe_sources,
           include_directories: includes,
           link_with: bubble_sort_lib,
+          cpp_pch: 'pch/bs_pch.h',
           install: true)
 
 test('Bubble Sort Unit Tests', bubble_sort_tests)
