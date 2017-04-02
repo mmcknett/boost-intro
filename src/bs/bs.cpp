@@ -1,6 +1,4 @@
 #include "bubble_sort.h"
-#include <iostream>
-#include <vector>
 
 int main()
 {
