@@ -1,8 +1,6 @@
 #include "bubble_sort.h"
 #include "cerr_perf_logger.h"
-#include <iostream>
 #include "sorter_logging_decorator.h"
-#include <vector>
 
 std::vector<int> readStdInForInts();
 void sort(std::vector<int>& inputToSort);
