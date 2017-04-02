@@ -2,62 +2,10 @@
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
 
+#include "fakeLogger.h"
+#include "fakeSorter.h"
 #include "sorter_logging_decorator.h"
-
-struct testState
-{
-    enum functionCall
-    {
-        sort,
-        logStart,
-        logEnd,
-    };
-
-    std::vector<functionCall> functionsCalled;
-};
-
-class fakeSorter : public sorter<int>
-{
-public:
-    fakeSorter(testState& state)
-        : _state(state)
-    {
-    }
-
-    ~fakeSorter() { }
-
-    virtual void sort(std::vector<int>& /*vec*/) override
-    {
-        _state.functionsCalled.push_back(testState::sort);
-    }
-
-private:
-    testState& _state;
-};
-
-class fakeLogger : public logger<int>
-{
-public:
-    fakeLogger(testState& state)
-        : _state(state)
-    {
-    }
-
-    ~fakeLogger() { }
-
-    virtual void logStart(const std::vector<int>& /*vec*/) override
-    {
-        _state.functionsCalled.push_back(testState::logStart);
-    }
-
-    virtual void logStop(const std::vector<int>& /*vec*/) override
-    {
-        _state.functionsCalled.push_back(testState::logEnd);
-    }
-
-private:
-    testState& _state;
-};
+#include "testState.h"
 
 std::vector<int> GetAnyVector()
 {
