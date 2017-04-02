@@ -1,5 +1,12 @@
 #!/bin/sh
-BUILD_DIR=build
+FLAVOR=debug
+
+opt=$1
+case $opt in
+  release) FLAVOR=release
+esac
+
+BUILD_DIR=build/$FLAVOR
 
 ninja_all() {
     for dir in $BUILD_DIR/*/ ; do
@@ -8,7 +15,7 @@ ninja_all() {
 }
 
 setup_and_ninja() {
-    ./setup.sh
+    ./setup.sh $FLAVOR
     ninja_all
 }
 
