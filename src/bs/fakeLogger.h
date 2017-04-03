@@ -1,12 +1,12 @@
 #pragma once
 
 #include "logger.h"
-#include "testState.h"
+#include "sorterLoggingDecoratorTestState.h"
 
 class fakeLogger : public logger<int>
 {
 public:
-    fakeLogger(testState& state)
+    fakeLogger(sorterLoggingDecoratorTestState& state)
         : _state(state)
     {
     }
@@ -15,14 +15,14 @@ public:
 
     virtual void logStart(const std::vector<int>& /*vec*/) override
     {
-        _state.functionsCalled.push_back(testState::logStart);
+        _state.functionsCalled.push_back(sorterLoggingDecoratorTestState::logStart);
     }
 
     virtual void logStop(const std::vector<int>& /*vec*/) override
     {
-        _state.functionsCalled.push_back(testState::logEnd);
+        _state.functionsCalled.push_back(sorterLoggingDecoratorTestState::logEnd);
     }
 
 private:
-    testState& _state;
+    sorterLoggingDecoratorTestState& _state;
 };

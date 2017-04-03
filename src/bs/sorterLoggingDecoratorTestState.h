@@ -2,7 +2,7 @@
 
 #include <vector>
 
-struct testState
+struct sorterLoggingDecoratorTestState
 {
     enum functionCall
     {

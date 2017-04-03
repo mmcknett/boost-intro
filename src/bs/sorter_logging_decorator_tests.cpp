@@ -5,7 +5,7 @@
 #include "fakeLogger.h"
 #include "fakeSorter.h"
 #include "sorter_logging_decorator.h"
-#include "testState.h"
+#include "sorterLoggingDecoratorTestState.h"
 
 std::vector<int> GetAnyVector()
 {
@@ -15,14 +15,14 @@ std::vector<int> GetAnyVector()
 BOOST_AUTO_TEST_CASE(Sort_AnyArray_LogStartWithArrayFollowedByLogStopWithArray)
 {
     // Arrange
-    testState state;
+    sorterLoggingDecoratorTestState state;
     sorter_logging_decorator<int, fakeSorter, fakeLogger> decorator(
         (fakeSorter(state)),
         (fakeLogger(state)));
-    std::vector<testState::functionCall> expectedCalls {
-        testState::logStart,
-        testState::sort,
-        testState::logEnd
+    std::vector<sorterLoggingDecoratorTestState::functionCall> expectedCalls {
+        sorterLoggingDecoratorTestState::logStart,
+        sorterLoggingDecoratorTestState::sort,
+        sorterLoggingDecoratorTestState::logEnd
     };
     auto anyVector = GetAnyVector();
 

@@ -1,12 +1,12 @@
 #pragma once
 
 #include "sorter.h"
-#include "testState.h"
+#include "sorterLoggingDecoratorTestState.h"
 
 class fakeSorter : public sorter<int>
 {
 public:
-    fakeSorter(testState& state)
+    fakeSorter(sorterLoggingDecoratorTestState& state)
         : _state(state)
     {
     }
@@ -15,9 +15,9 @@ public:
 
     virtual void sort(std::vector<int>& /*vec*/) override
     {
-        _state.functionsCalled.push_back(testState::sort);
+        _state.functionsCalled.push_back(sorterLoggingDecoratorTestState::sort);
     }
 
 private:
-    testState& _state;
+    sorterLoggingDecoratorTestState& _state;
 };
