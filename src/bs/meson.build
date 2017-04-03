@@ -23,10 +23,17 @@ bubble_sort_tests = executable('bubble_sort_tests',
           link_with: bubble_sort_lib,
           dependencies: boost_utfw)
 
+sorter_logging_decorator_tests = executable('sorter_logging_decorator_tests',
+                                    sources: 'sorter_logging_decorator_tests.cpp',
+                                    include_directories: includes,
+                                    dependencies: boost_utfw)
+
 executable('bs',
           sources: bs_exe_sources,
           include_directories: includes,
           link_with: bubble_sort_lib,
+          cpp_pch: 'pch/bs_pch.h',
           install: true)
 
 test('Bubble Sort Unit Tests', bubble_sort_tests)
+test('Sorter Logging Decorator Unit Tests', sorter_logging_decorator_tests)

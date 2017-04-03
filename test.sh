@@ -1,5 +1,9 @@
 #!/bin/sh
-BUILD_DIR=build
+
+# Limit tests to the debug flavor
+FLAVOR=debug
+
+BUILD_DIR=build/$FLAVOR
 
 ninja_test_all() {
     for dir in $BUILD_DIR/*/ ; do
@@ -8,7 +12,7 @@ ninja_test_all() {
 }
 
 setup_and_ninja_and_test() {
-    ./bld.sh
+    ./bld.sh $FLAVOR
     ninja_test_all
 }
 

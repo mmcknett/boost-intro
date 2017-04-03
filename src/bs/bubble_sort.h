@@ -1,9 +1,9 @@
 #pragma once
 
-#include <vector>
+#include "sorter.h"
 
-class bubble_sort
+class bubble_sort : public sorter<int>
 {
 public:
-  void sort(std::vector<int>& vec);
+  virtual void sort(std::vector<int>& vec) override;
 };
